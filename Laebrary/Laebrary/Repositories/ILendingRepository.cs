@@ -6,6 +6,8 @@ namespace Laebrary.Repositories
     {
         Task AddLending(Lending lending);
         Task<List<Book>> GetLendedBooks(string nationalNumber);
+        Task<bool> IsBookLended(int bookId);
+
 
     }
 }

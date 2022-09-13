@@ -25,5 +25,10 @@ namespace Laebrary.Repositories
             return _dbContext.Lendings.Where(l => l.Member.NationalNumber == nationalNumber).Select(l => l.Book).ToListAsync(); ;
         }
 
+        public Task<bool> IsBookLended(int bookId)
+        {
+            return _dbContext.Lendings.AnyAsync(x => x.Book.Id == bookId);
+        }
+
     }
 }

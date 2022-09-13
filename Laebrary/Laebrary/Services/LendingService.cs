@@ -16,13 +16,17 @@ namespace Laebrary.Services
             _memberRepository = memberRepository;
         }
 
-        public async Task LendBook(int bookId, string memberNationalNumber) 
+        public async Task LendBook(int bookId, string memberNationalNumber)
         {
+            //check book is not lended by anyone else
+            if (await _lendingRepository.IsBookLended(bookId)) throw new Exception("Book is not lendable");
+            //check member has not reached max rentable items
+            if ((await _lendingRepository.GetLendedBooks(memberNationalNumber)).Count() >= 4) throw new Exception("Max number of lended books reached");
             //create new Lending
             var book = await _bookRepository.GetBookById(bookId);
             var member = await _memberRepository.GetMemberByNationalNumber(memberNationalNumber);
             var lending = new Lending(book, member, DateTime.Now.AddDays(30));
             await _lendingRepository.AddLending(lending);
-        }        
+        }
     }
 }
