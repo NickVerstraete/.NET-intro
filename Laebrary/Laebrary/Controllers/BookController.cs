@@ -18,7 +18,7 @@ namespace Laebrary.Controllers
         [HttpGet]
         public async Task<IEnumerable<Book>> Get()
         {
-            return await _bookRepository.GetAllBooks();
+            throw new NotImplementedException();
         }
 
         [HttpPost]
