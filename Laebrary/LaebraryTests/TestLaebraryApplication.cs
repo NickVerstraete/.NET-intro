@@ -39,9 +39,6 @@ namespace LaebraryTests
                                             await labraeryDbContext.SaveChangesAsync();
                                         }
                                     }
-
-                                   //Register services here
-
                                     services.AddControllers();
                                 });
 

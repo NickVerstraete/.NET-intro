@@ -7,8 +7,6 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddDbContext<LaebraryContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("LaebraryDb")));
        
-
-//Services registered here should also be registered in TestLaebraryApplication.cs
 //Add Repositories
 
 
