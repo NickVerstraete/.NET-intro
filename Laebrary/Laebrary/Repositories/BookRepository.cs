@@ -16,6 +16,11 @@ namespace Laebrary.Repositories
         {
             _dbContext.Books.Add(book);
             await _dbContext.SaveChangesAsync();
-        }        
+        }
+
+        public async Task<List<Book>> GetAllBooks()
+        {
+            return await _dbContext.Books.ToListAsync();
+        }
     }
 }
