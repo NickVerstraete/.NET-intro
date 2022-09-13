@@ -1,4 +1,5 @@
 ﻿using Laebrary.Models;
+using Laebrary.Repositories;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -40,7 +41,8 @@ namespace LaebraryTests
                                         }
                                     }
 
-                                   //Register services here
+                                    //Register services here
+                                    services.AddScoped<IBookRepository, BookRepository>();
 
                                     services.AddControllers();
                                 });

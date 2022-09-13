@@ -1,4 +1,5 @@
 using Laebrary.Models;
+using Laebrary.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -10,6 +11,7 @@ builder.Services.AddDbContext<LaebraryContext>(options => options.UseSqlServer(b
 
 //Services registered here should also be registered in TestLaebraryApplication.cs
 //Add Repositories
+builder.Services.AddTransient<IBookRepository, BookRepository>();
 
 
 //Add Services
