@@ -12,7 +12,7 @@ builder.Services.AddDbContext<LaebraryContext>(options => options.UseSqlServer(b
 //Services registered here should also be registered in TestLaebraryApplication.cs
 //Add Repositories
 builder.Services.AddTransient<IBookRepository, BookRepository>();
-
+builder.Services.AddTransient<IMemberRepository, MemberRepository>();
 
 //Add Services
 
