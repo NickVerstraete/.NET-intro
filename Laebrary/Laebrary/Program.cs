@@ -1,5 +1,6 @@
 using Laebrary.Models;
 using Laebrary.Repositories;
+using Laebrary.Services;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -13,8 +14,10 @@ builder.Services.AddDbContext<LaebraryContext>(options => options.UseSqlServer(b
 //Add Repositories
 builder.Services.AddTransient<IBookRepository, BookRepository>();
 builder.Services.AddTransient<IMemberRepository, MemberRepository>();
+builder.Services.AddTransient<ILendingRepository, LendingRepository>();
 
 //Add Services
+builder.Services.AddTransient<ILendingService, LendingService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

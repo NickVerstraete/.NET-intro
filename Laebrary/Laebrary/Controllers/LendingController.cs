@@ -1,4 +1,6 @@
 using Laebrary.Models;
+using Laebrary.Repositories;
+using Laebrary.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Laebrary.Controllers
@@ -6,15 +8,20 @@ namespace Laebrary.Controllers
     [ApiController]
     [Route("api/[controller]/[action]")]
     public class LendingController : ControllerBase
-    {     
-        public LendingController()
+    {
+        private readonly ILendingService _lendingService;
+        private readonly ILendingRepository _lendingRepository;
+
+        public LendingController(ILendingService lendingService, ILendingRepository lendingRepository)
         {
+            _lendingService = lendingService;
+            _lendingRepository = lendingRepository;
         }               
 
         [HttpPost]
         public async Task LendBook(int bookId, string nationalNumberMember)
         {
-            throw new NotImplementedException();
+            await _lendingService.LendBook(bookId, nationalNumberMember);
         }
 
         [HttpPost]
@@ -26,7 +33,7 @@ namespace Laebrary.Controllers
         [HttpGet]
         public async Task<List<Book>> GetLendings(string nationalNumber)
         {
-            throw new NotImplementedException();
+            return await _lendingRepository.GetLendedBooks(nationalNumber);
         }
     }
 }
