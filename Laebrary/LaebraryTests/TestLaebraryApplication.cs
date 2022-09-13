@@ -40,7 +40,6 @@ namespace LaebraryTests
                                             await labraeryDbContext.SaveChangesAsync();
                                         }
                                     }
-
                                     services.AddControllers();
                                 });
 
