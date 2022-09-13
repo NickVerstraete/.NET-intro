@@ -40,10 +40,6 @@ namespace LaebraryTests
                                             await labraeryDbContext.SaveChangesAsync();
                                         }
                                     }
-
-                                    //Register services here
-                                    services.AddScoped<IBookRepository, BookRepository>();
-
                                     services.AddControllers();
                                 });
 
