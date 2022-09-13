@@ -5,6 +5,7 @@ namespace Laebrary.Repositories
     public interface IBookRepository
     {
         Task AddBook(Book book);
+        Task<List<Book>> GetAllBooks();
         Task<Book> GetBookById(int id);
 
     }

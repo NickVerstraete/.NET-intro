@@ -18,6 +18,11 @@ namespace Laebrary.Repositories
             await _dbContext.SaveChangesAsync();
         }
 
+        public async Task<List<Book>> GetAllBooks()
+        {
+            return await _dbContext.Books.ToListAsync();
+        }
+        
         public Task<Book> GetBookById(int id)
         {
             return _dbContext.Books.SingleAsync(x => x.Id == id);
