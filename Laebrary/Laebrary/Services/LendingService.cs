@@ -28,5 +28,12 @@ namespace Laebrary.Services
             var lending = new Lending(book, member, DateTime.Now.AddDays(30));
             await _lendingRepository.AddLending(lending);
         }
+
+        public async Task ReturnBook(int bookId)
+        {
+            //check book is lended
+            if (!await _lendingRepository.IsBookLended(bookId)) throw new Exception("Book is not lend out, impossible to return");
+            await _lendingRepository.RemoveLending(bookId);
+        }
     }
 }

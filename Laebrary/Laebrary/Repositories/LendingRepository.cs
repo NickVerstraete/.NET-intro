@@ -30,5 +30,10 @@ namespace Laebrary.Repositories
             return _dbContext.Lendings.AnyAsync(x => x.Book.Id == bookId);
         }
 
+        public Task RemoveLending(int bookId)
+        {
+            _dbContext.Lendings.Remove(_dbContext.Lendings.Single(x => x.Book.Id == bookId));
+            return _dbContext.SaveChangesAsync();
+        }
     }
 }

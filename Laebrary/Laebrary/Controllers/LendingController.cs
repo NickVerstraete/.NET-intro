@@ -27,7 +27,7 @@ namespace Laebrary.Controllers
         [HttpPost]
         public async Task ReturnBook(int bookId)
         {
-            throw new NotImplementedException();
+            await _lendingService.ReturnBook(bookId);
         }
 
         [HttpGet]
