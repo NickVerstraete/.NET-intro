@@ -1,4 +1,5 @@
 using Laebrary.Models;
+using System.Net;
 using System.Net.Http.Json;
 
 namespace LaebraryTests
@@ -6,6 +7,17 @@ namespace LaebraryTests
     [TestClass]
     public class BookControllerTests
     {
+        [TestMethod]
+        public async Task ShouldAddABook()
+        {
+            var appFactory = new TestLaebraryApplication().GetWebApplicationFactory(context => Task.CompletedTask);
+            var httpClient = appFactory.CreateClient();
+            var book1 = new Book { Title = "C# 8.0 and .NET Core 3.0", Author = "Mark J. Price", Isbn = "978-1788478120", Description = "Modern Cross-Platform Development: Build applications with C#, .NET Core, Entity Framework Core, ASP.NET Core, and ML.NET using ... Studio Code, 4th Edition (English Edition) " };
+            var result = await httpClient.PostAsJsonAsync("/api/Book", book1);
+            Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
+        }
+
+
         [TestMethod]
         public async Task ShouldReturnBookInDb()
         {
