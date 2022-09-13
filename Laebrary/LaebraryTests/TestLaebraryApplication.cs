@@ -41,9 +41,6 @@ namespace LaebraryTests
                                         }
                                     }
 
-                                    //Register services here
-                                    services.AddScoped<IBookRepository, BookRepository>();
-
                                     services.AddControllers();
                                 });
 
